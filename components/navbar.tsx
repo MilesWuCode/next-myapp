@@ -37,28 +37,18 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/ssr">
-                <a onClick={closeMenu}>SSR</a>
+              <Link href="/login">
+                <a onClick={closeMenu}>Login</a>
               </Link>
             </li>
             <li>
-              <Link href="/ssg">
-                <a onClick={closeMenu}>SSG</a>
+              <Link href="/profile">
+                <a onClick={closeMenu}>profile</a>
               </Link>
             </li>
             <li>
-              <Link href="/">
-                <a onClick={closeMenu}>Dynamic routing</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/csr">
-                <a onClick={closeMenu}>CSR</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/swr">
-                <a onClick={closeMenu}>SWR</a>
+              <Link href="/todo">
+                <a onClick={closeMenu}>Todo</a>
               </Link>
             </li>
             <li>
