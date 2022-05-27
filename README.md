@@ -2,7 +2,7 @@
 
 ## pages
 
-- home (markdown)
+- home
 - login (Auth)
 - thirdparty-login (Auth+)
 - register (RESTful)
