@@ -70,7 +70,9 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="text-xl normal-case btn btn-ghost">Next Myapp</a>
+        <Link href="/">
+          <a className="text-xl normal-case btn btn-ghost">Next Myapp</a>
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
