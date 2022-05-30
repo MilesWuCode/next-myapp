@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import axios from '~/plugins/axios'
+import { toast } from 'react-toastify'
 
 type Inputs = {
   name: string
@@ -19,18 +21,25 @@ const Register: NextPage = () => {
     watch,
     reset,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<Inputs>({ mode: 'all' })
 
-  console.log('errors', errors)
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('data', data)
-
-    setError('email', {
-      type: 'server',
-      message: '己經使用',
-    })
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await axios
+      .post('/error', data)
+      .then(({ data }) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        // base
+        console.log(err.message, err.response.status, err.response.statusText)
+        toast(err.message)
+        // setError('email', {
+        //   type: 'server',
+        //   message: '己經使用',
+        // })
+      })
+      .finally(() => console.log('done'))
   }
 
   const name = register('name', {
@@ -44,6 +53,7 @@ const Register: NextPage = () => {
         <title>Register</title>
         <meta name="description" content="Register" />
       </Head>
+
       <main className="container mx-auto my-0">
         <h1 className="text-3xl">Register</h1>
 
@@ -80,6 +90,7 @@ const Register: NextPage = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
+                autoComplete="off"
                 className="w-full max-w-xs input input-bordered"
                 {...register('email', {
                   required: { value: true, message: '必填' },
@@ -104,6 +115,7 @@ const Register: NextPage = () => {
                 type="password"
                 placeholder="Password"
                 className="w-full max-w-xs input input-bordered"
+                autoComplete="new-password"
                 {...register('password', {
                   required: { value: true, message: '必填' },
                   minLength: { value: 8, message: '最少8字元' },
@@ -128,6 +140,7 @@ const Register: NextPage = () => {
                 type="password"
                 placeholder="Comfirm Password"
                 className="w-full max-w-xs input input-bordered"
+                autoComplete="off"
                 {...register('comfirm_password', {
                   required: { value: true, message: '必填' },
                   validate: (value: string) => {
@@ -149,7 +162,7 @@ const Register: NextPage = () => {
             <div className="flex justify-end mt-4 space-x-2">
               <button
                 type="submit"
-                disabled={!isValid}
+                disabled={!isValid || isSubmitting}
                 className="btn btn-success"
               >
                 Submit

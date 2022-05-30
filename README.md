@@ -19,6 +19,10 @@
 - nextjs
 - react-hook-form
 - formik (FYR)
+- react-use
+- https://github.com/mui/material-ui
+- https://github.com/iamhosseindhv/notistack
+- https://github.com/fkhadra/react-toastify
 
 ## css
 
