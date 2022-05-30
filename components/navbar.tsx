@@ -1,9 +1,14 @@
 import Link from 'next/link'
 
+interface Link {
+  name: string
+  path: string
+}
+
 export default function Navbar() {
   const tabIndex: number = 0
 
-  const link = [
+  const link: Link[] = [
     { name: 'Index', path: '/' },
     { name: 'Login', path: '/login' },
     { name: 'Register', path: '/register' },
