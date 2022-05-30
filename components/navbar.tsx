@@ -3,6 +3,15 @@ import Link from 'next/link'
 export default function Navbar() {
   const tabIndex: number = 0
 
+  const link = [
+    { name: 'Index', path: '/' },
+    { name: 'login', path: '/login' },
+    { name: 'Register', path: '/register' },
+    { name: 'Profile', path: '/profile' },
+    { name: 'Todo', path: '/todo' },
+    { name: 'Post', path: '/post' },
+  ]
+
   function closeMenu(event: React.BaseSyntheticEvent) {
     event.currentTarget.blur()
   }
@@ -31,31 +40,15 @@ export default function Navbar() {
             tabIndex={tabIndex}
             className="p-2 mt-3 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link href="/">
-                <a onClick={closeMenu}>Index</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/login">
-                <a onClick={closeMenu}>Login</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/profile">
-                <a onClick={closeMenu}>profile</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/todo">
-                <a onClick={closeMenu}>Todo</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/post">
-                <a onClick={closeMenu}>Post</a>
-              </Link>
-            </li>
+            {link.map((item) => {
+              return (
+                <li key={item.name}>
+                  <Link href={item.path}>
+                    <a onClick={closeMenu}>{item.name}</a>
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>

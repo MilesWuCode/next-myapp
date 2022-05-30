@@ -19,4 +19,5 @@
 - nextjs
 - tailwindcss
 - headlessui
+- daisyui
 - merakiui
