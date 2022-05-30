@@ -20,7 +20,9 @@ const Register: NextPage = () => {
     reset,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>({ mode: 'all' })
+
+  console.log('errors', errors)
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log('data', data)
@@ -30,6 +32,11 @@ const Register: NextPage = () => {
       message: '己經使用',
     })
   }
+
+  const name = register('name', {
+    required: { value: true, message: '必填' },
+    maxLength: { value: 20, message: '最多20字元' },
+  })
 
   return (
     <>
@@ -51,10 +58,10 @@ const Register: NextPage = () => {
                 type="text"
                 placeholder="Name"
                 className="w-full max-w-xs input input-bordered"
-                {...register('name', {
-                  required: { value: true, message: '必填' },
-                  maxLength: { value: 20, message: '最多20字元' },
-                })}
+                name={name.name}
+                onBlur={name.onBlur}
+                onChange={name.onChange}
+                ref={name.ref}
               />
               {errors.name && (
                 <label className="label">

@@ -18,6 +18,7 @@
 
 - nextjs
 - react-hook-form
+- formik (FYR)
 
 ## css
 
