@@ -5,7 +5,7 @@ export default function Navbar() {
 
   const link = [
     { name: 'Index', path: '/' },
-    { name: 'login', path: '/login' },
+    { name: 'Login', path: '/login' },
     { name: 'Register', path: '/register' },
     { name: 'Profile', path: '/profile' },
     { name: 'Todo', path: '/todo' },
