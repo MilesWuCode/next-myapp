@@ -90,7 +90,7 @@ const Register: NextPage = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
-                autoComplete="off"
+                autoComplete="username"
                 className="w-full max-w-xs input input-bordered"
                 {...register('email', {
                   required: { value: true, message: '必填' },

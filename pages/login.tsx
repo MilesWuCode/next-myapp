@@ -54,6 +54,7 @@ const Login: NextPage = () => {
                 type="text"
                 placeholder="Email"
                 value="test@mail.com"
+                autoComplete="username"
                 className="w-full max-w-xs input input-bordered"
                 {...register('email', {
                   required: { value: true, message: '必填' },
@@ -78,6 +79,7 @@ const Login: NextPage = () => {
                 type="password"
                 placeholder="Password"
                 value="password"
+                autoComplete="current-password"
                 className="w-full max-w-xs input input-bordered"
                 {...register('password', {
                   required: { value: true, message: '必填' },

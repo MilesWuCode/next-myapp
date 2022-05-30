@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
+    "classnames": "^2.3.1",
     "daisyui": "^2.15.1",
     "next": "12.1.6",
     "postcss": "^8.4.14",

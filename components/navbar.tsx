@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import classNames from 'classnames'
 
 interface Link {
   name: string
@@ -7,6 +9,8 @@ interface Link {
 }
 
 export default function Navbar() {
+  const router = useRouter()
+
   const tabIndex: number = 0
 
   const link: Link[] = [
@@ -49,7 +53,12 @@ export default function Navbar() {
           >
             {link.map((item) => {
               return (
-                <li key={item.name}>
+                <li
+                  key={item.name}
+                  className={classNames('link', {
+                    'link-primary': router.asPath === item.path,
+                  })}
+                >
                   <Link href={item.path}>
                     <a onClick={closeMenu}>{item.name}</a>
                   </Link>
@@ -58,6 +67,22 @@ export default function Navbar() {
             })}
           </ul>
         </div>
+        <label htmlFor="drawer-checkbox" className="btn btn-ghost btn-circle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h7"
+            />
+          </svg>
+        </label>
       </div>
       <div className="navbar-center">
         <Link href="/">
@@ -102,7 +127,12 @@ export default function Navbar() {
         </button>
         <button className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <Image src="/images/black_cat.jpg" alt="me" width="40" height="40" />
+            <Image
+              src="/images/black_cat.jpg"
+              alt="me"
+              width="40"
+              height="40"
+            />
           </div>
         </button>
       </div>
