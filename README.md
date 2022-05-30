@@ -17,7 +17,13 @@
 ## packages
 
 - nextjs
+- react-hook-form
+
+## css
+
 - tailwindcss
 - headlessui
 - daisyui
-- merakiui
+- merakiui (FYR)
+- semantic-ui-react (FYR)
+- semantic-ui-css (FYR)
