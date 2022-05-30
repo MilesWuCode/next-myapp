@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Link {
   name: string
@@ -13,6 +14,7 @@ export default function Navbar() {
     { name: 'Login', path: '/login' },
     { name: 'Register', path: '/register' },
     { name: 'Profile', path: '/profile' },
+    { name: 'Change Password', path: '/change-password' },
     { name: 'Todo', path: '/todo' },
     { name: 'Post', path: '/post' },
   ]
@@ -100,7 +102,7 @@ export default function Navbar() {
         </button>
         <button className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src="https://api.lorem.space/image/face?hash=3174" />
+            <Image src="/images/black_cat.jpg" alt="me" width="40" height="40" />
           </div>
         </button>
       </div>
