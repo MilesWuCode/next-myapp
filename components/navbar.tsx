@@ -98,6 +98,11 @@ export default function Navbar() {
             <span className="badge badge-xs badge-primary indicator-item"></span>
           </div>
         </button>
+        <button className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img src="https://api.lorem.space/image/face?hash=3174" />
+          </div>
+        </button>
       </div>
     </div>
   )
