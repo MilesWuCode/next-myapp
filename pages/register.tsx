@@ -19,7 +19,7 @@ const Register: NextPage = () => {
     watch,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<Inputs>({ mode: 'all' })
 
   console.log('errors', errors)
@@ -147,7 +147,11 @@ const Register: NextPage = () => {
             </div>
 
             <div className="flex justify-end mt-4 space-x-2">
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                className="btn btn-success"
+                disabled={!isValid}
+              >
                 Submit
               </button>
               <button
