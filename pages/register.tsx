@@ -149,8 +149,8 @@ const Register: NextPage = () => {
             <div className="flex justify-end mt-4 space-x-2">
               <button
                 type="submit"
-                className="btn btn-success"
                 disabled={!isValid}
+                className="btn btn-success"
               >
                 Submit
               </button>

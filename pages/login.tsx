@@ -14,18 +14,23 @@ const Login: NextPage = () => {
   const {
     setError,
     register,
-    watch,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log('data', data)
 
-    setError('email', {
-      type: 'server',
-      message: '己經使用',
+    // setError('email', {
+    //   type: 'server',
+    //   message: '己經使用',
+    // })
+
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
     })
   }
 
@@ -48,6 +53,7 @@ const Login: NextPage = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
+                value="test@mail.com"
                 className="w-full max-w-xs input input-bordered"
                 {...register('email', {
                   required: { value: true, message: '必填' },
@@ -71,6 +77,7 @@ const Login: NextPage = () => {
                 id="password"
                 type="password"
                 placeholder="Password"
+                value="password"
                 className="w-full max-w-xs input input-bordered"
                 {...register('password', {
                   required: { value: true, message: '必填' },
@@ -88,7 +95,11 @@ const Login: NextPage = () => {
             </div>
 
             <div className="flex justify-end mt-4 space-x-2">
-              <button type="submit" className="btn btn-success">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn btn-success"
+              >
                 Submit
               </button>
               <button
