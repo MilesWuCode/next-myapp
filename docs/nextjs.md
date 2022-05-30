@@ -1,6 +1,7 @@
 ```sh
 yarn create next-app --typescript
 mkdir components
+mkdir public/images
 touch pages/_document.tsx
 ```
 
