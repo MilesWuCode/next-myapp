@@ -100,7 +100,7 @@ export default NextAuth({
         token.token = user.token
         token.name = user.name
         token.email = user.email
-        token.image = user.avatar
+        token.picture = user.avatar as string
       }
 
       return token
@@ -117,9 +117,9 @@ export default NextAuth({
       session.id = token.id;
       session.token = token.token
       session.user = {
-        name: token?.name,
-        email: token?.email,
-        image: token?.image as string,
+        name: token.name,
+        email: token.email,
+        image: token.picture,
       }
 
       return session
