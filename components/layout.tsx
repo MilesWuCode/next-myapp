@@ -24,6 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const link: Link[] = [
     { name: 'Index', path: '/' },
     { name: 'Login', path: '/login' },
+    { name: 'Thirdparty', path: '/thirdparty' },
     { name: 'Register', path: '/register' },
     { name: 'Profile', path: '/profile' },
     { name: 'Change Password', path: '/change-password' },

@@ -17,8 +17,8 @@
 ## packages
 
 - nextjs
-- react-hook-form
-- formik (FYR)
+- https://github.com/react-hook-form/react-hook-form
+- https://github.com/jaredpalmer/formik (FYR)
 - https://github.com/streamich/react-use
 - https://github.com/mui/material-ui
 - https://github.com/iamhosseindhv/notistack
