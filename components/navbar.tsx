@@ -1,7 +1,8 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 interface Link {
   name: string
@@ -10,6 +11,12 @@ interface Link {
 
 export default function Navbar() {
   const router = useRouter()
+
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    setPath(router.asPath)
+  }, [router.asPath])
 
   const tabIndex: number = 0
 
@@ -56,7 +63,7 @@ export default function Navbar() {
                 <li
                   key={item.name}
                   className={classNames('link', {
-                    'link-primary': router.asPath === item.path,
+                    'link-primary': path === item.path,
                   })}
                 >
                   <Link href={item.path}>

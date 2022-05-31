@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Navbar from '~/components/navbar'
-import { useRouter } from 'next/router'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export const title = 'next-myapp'
 
@@ -13,6 +14,12 @@ interface Link {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+
+  const [path, setPath] = useState('')
+
+  useEffect(() => {
+    setPath(router.asPath)
+  }, [router.asPath])
 
   const link: Link[] = [
     { name: 'Index', path: '/' },
@@ -52,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <a
                       onClick={closeMenu}
                       className={classNames({
-                        active: router.asPath === item.path,
+                        active: path === item.path,
                       })}
                     >
                       {item.name}

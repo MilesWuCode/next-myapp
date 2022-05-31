@@ -5,12 +5,12 @@ const NotFound: NextPage = () => {
   return (
     <>
       <Head>
-        <title>404 - Page Not Found</title>
-        <meta name="description" content="404 - Page Not Found" />
+        <title>500 - Page Error</title>
+        <meta name="description" content="500 - Page Error" />
       </Head>
 
       <h1 className="flex justify-center mt-[30vh] text-3xl">
-        404 - This page could not be found
+        500 - Page Error
       </h1>
     </>
   )
