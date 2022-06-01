@@ -1,8 +1,10 @@
 import Image from 'next/image'
+import Img from '~/components/Img'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 interface Link {
   name: string
@@ -11,6 +13,7 @@ interface Link {
 
 export default function Navbar() {
   const router = useRouter()
+  const { data: session, status } = useSession()
 
   const [path, setPath] = useState('')
 
@@ -133,16 +136,18 @@ export default function Navbar() {
             <span className="badge badge-xs badge-primary indicator-item"></span>
           </div>
         </button>
-        <button className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <Image
-              src="/images/black_cat.jpg"
-              alt="me"
-              width="40"
-              height="40"
-            />
-          </div>
-        </button>
+        {status === 'authenticated' && (
+          <button className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <Img
+                src={session?.user?.image}
+                alt="me"
+                width="40"
+                height="40"
+              />
+            </div>
+          </button>
+        )}
       </div>
     </div>
   )

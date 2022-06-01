@@ -8,7 +8,7 @@ const Thirdparty: NextPage = () => {
   const { data: session, status } = useSession()
 
   if (status === 'authenticated') {
-    console.log(session)
+    // console.log(session)
     // return <p>Signed in as {session?.user?.email || ''}</p>
   }
 

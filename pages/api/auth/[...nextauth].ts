@@ -1,12 +1,12 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import CredentialsProvider from "next-auth/providers/credentials"
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 const login = async (email: string, password: string) => {
-  const res = await fetch('http://localhost/api/auth/login', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
     method: 'POST',
     body: JSON.stringify({ email, password }),
-    headers: { "Content-Type": "application/json" }
+    headers: { 'Content-Type': 'application/json' },
   })
 
   const data = await res.json()
@@ -19,12 +19,12 @@ const login = async (email: string, password: string) => {
 }
 
 const getUser = async (token: string) => {
-  const res = await fetch('http://localhost/api/me', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/me`, {
     method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    }
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
   })
 
   const data = await res.json()
@@ -43,11 +43,11 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      id: "credentials",
+      id: 'credentials',
       name: 'credentials',
       credentials: {
-        email: { label: "Email", type: "text", value: "miles@email.com" },
-        password: { label: "Password", type: "password", value: "password" }
+        email: { label: 'Email', type: 'text', value: 'miles@email.com' },
+        password: { label: 'Password', type: 'password', value: 'password' },
       },
       async authorize(credentials, req) {
         // console.log('authorize', JSON.stringify(credentials))
@@ -63,15 +63,15 @@ export default NextAuth({
         user.token = token
 
         return user
-      }
-    })
+      },
+    }),
   ],
   pages: {
     signIn: '/login',
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      // console.log('signIn')
+      // console.log('signIn', user, account, profile, email, credentials)
 
       if (account.provider === 'google') {
         return profile.email_verified as boolean
@@ -87,40 +87,36 @@ export default NextAuth({
     async jwt({ token, user, account, profile, isNewUser }) {
       // console.log('jwt', token, user, account, profile, isNewUser)
 
-      // OAuth
-      if (account) {
-        token.accessToken = account.access_token;
-        token.refreshToken = account.refresh_token;
-        token.idToken = account.id_token;
-        token.provider = account.provider;
+      if (account && account.provider === 'google') {
+        console.log('google-account', account)
+        token.accessToken = account.access_token
+        token.refreshToken = account.refresh_token
+        token.idToken = account.id_token
       }
 
-      if (user) {
-        token.id = user.id.toString()
-        token.token = user.token
-        token.name = user.name
-        token.email = user.email
-        token.picture = user.avatar as string
+      if (user && account?.provider === 'credentials') {
+        token.id = user.id?.toString() || ''
+        token.name = user.name || ''
+        token.email = user.email || ''
+        token.picture = user.avatar || ''
+        token.token = user.token || ''
       }
 
       return token
     },
     async session({ session, token, user }) {
-      console.log('session', session, token, user)
+      // console.log('session', session, token, user)
 
-      session.provider = token.provider
-
+      // next-auth.d.ts
       // session.accessToken = token.accessToken;
       // session.refreshToken = token.refreshToken;
       // session.idToken = token.idToken;
 
-      session.id = token.id;
-      session.token = token.token
-      session.user = {
-        name: token.name,
-        email: token.email,
-        image: token.picture,
-      }
+      session.user.id = token.id
+      session.user.name = token.name
+      session.user.email = token.name
+      session.user.image = token.picture
+      session.user.token = token.token
 
       return session
     },

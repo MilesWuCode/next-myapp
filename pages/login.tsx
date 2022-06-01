@@ -20,7 +20,7 @@ const Login: NextPage = () => {
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('data', data)
+    // console.log('data', data)
 
     // setError('email', {
     //   type: 'server',

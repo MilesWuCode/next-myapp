@@ -32,7 +32,7 @@ const Register: NextPage = () => {
       })
       .catch((err) => {
         // base
-        console.log(err.message, err.response.status, err.response.statusText)
+        // console.log(err.message, err.response.status, err.response.statusText)
         toast(err.message)
         // setError('email', {
         //   type: 'server',
