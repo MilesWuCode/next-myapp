@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 
-export default function Img({ ...props }) {
+export default function Img({ ...props }: ImageProps) {
   const errorImage = '/images/white_cat.jpg'
 
   const [src, setSrc] = useState(props.src || errorImage)
