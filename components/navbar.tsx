@@ -140,7 +140,7 @@ export default function Navbar() {
           <button className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               <Img
-                src={session?.user?.image}
+                src={session?.user?.image || ''}
                 alt="me"
                 width="40"
                 height="40"
