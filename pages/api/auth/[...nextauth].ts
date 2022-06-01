@@ -66,9 +66,6 @@ export default NextAuth({
       },
     }),
   ],
-  pages: {
-    signIn: '/login',
-  },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       // console.log('signIn', user, account, profile, email, credentials)
@@ -120,5 +117,11 @@ export default NextAuth({
 
       return session
     },
+  },
+  pages: {
+    signIn: '/login',
+  },
+  theme: {
+    colorScheme: "light",
   },
 })

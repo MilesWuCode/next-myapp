@@ -16,7 +16,8 @@
 
 ## packages
 
-- nextjs
+- https://github.com/vercel/next.js
+- https://react-typescript-cheatsheet.netlify.app/
 - https://github.com/react-hook-form/react-hook-form
 - https://github.com/jaredpalmer/formik (FYR)
 - https://github.com/streamich/react-use
