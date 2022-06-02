@@ -12,14 +12,14 @@ interface Link {
 }
 
 export default function Navbar() {
-  const router = useRouter()
+  const { pathname } = useRouter()
   const { data: session, status } = useSession()
 
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    setPath(router.pathname)
-  }, [router.pathname])
+    setPath(pathname)
+  }, [pathname])
 
   const tabIndex: number = 0
 

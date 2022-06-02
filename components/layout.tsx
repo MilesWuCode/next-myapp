@@ -13,13 +13,13 @@ interface Link {
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
+  const { pathname } = useRouter()
 
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    setPath(router.pathname)
-  }, [router.pathname])
+    setPath(pathname)
+  }, [pathname])
 
   const link: Link[] = [
     { name: 'Index', path: '/' },
