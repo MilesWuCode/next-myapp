@@ -32,6 +32,7 @@ export default function Navbar() {
     { name: 'Change Password', path: '/change-password' },
     { name: 'Todo', path: '/todo' },
     { name: 'Post', path: '/post' },
+    { name: 'Carousel', path: '/carousel' },
   ]
 
   function closeMenu(event: React.BaseSyntheticEvent) {

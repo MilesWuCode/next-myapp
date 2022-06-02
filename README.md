@@ -26,6 +26,7 @@
 - https://github.com/JedWatson/classnames
 - https://github.com/vercel/swr
 - https://github.com/tannerlinsley/react-query
+- https://github.com/nolimits4web/swiper
 
 ## css
 
