@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { signIn } from 'next-auth/react'
 import Head from 'next/head'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -19,7 +20,15 @@ const Login: NextPage = () => {
     formState: { errors, isSubmitting },
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const signInResponse = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    })
+
+    console.log(signInResponse)
+
     // console.log('data', data)
 
     // setError('email', {
@@ -27,11 +36,11 @@ const Login: NextPage = () => {
     //   message: '己經使用',
     // })
 
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, 2000)
-    })
+    // return new Promise<void>((resolve) => {
+    //   setTimeout(() => {
+    //     resolve()
+    //   }, 2000)
+    // })
   }
 
   return (
@@ -53,7 +62,7 @@ const Login: NextPage = () => {
                 id="email"
                 type="text"
                 placeholder="Email"
-                value="test@mail.com"
+                value="miles123@email.com"
                 autoComplete="username"
                 className="w-full max-w-xs input input-bordered"
                 {...register('email', {

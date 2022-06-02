@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { signIn } from 'next-auth/react'
 
-const Thirdparty: NextPage = () => {
+export default function Thirdparty() {
   const { data: session, status } = useSession()
 
   if (status === 'authenticated') {
@@ -12,7 +12,7 @@ const Thirdparty: NextPage = () => {
     // return <p>Signed in as {session?.user?.email || ''}</p>
   }
 
-  const credentialsAuth = async ()=> {
+  const credentialsAuth = async () => {
     const signInResponse = await signIn('credentials', {
       email: 'miles@email.com',
       password: 'password',
@@ -44,11 +44,7 @@ const Thirdparty: NextPage = () => {
             Google Sing in
           </button>
 
-          <button
-            onClick={credentialsAuth}
-          >
-            Credentials
-          </button>
+          <button onClick={credentialsAuth}>Credentials</button>
 
           <button onClick={() => signOut()}>Sing Out</button>
         </div>
@@ -57,4 +53,4 @@ const Thirdparty: NextPage = () => {
   )
 }
 
-export default Thirdparty
+Thirdparty.auth = false
