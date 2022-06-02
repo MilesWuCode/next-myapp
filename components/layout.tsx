@@ -31,6 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: 'Todo', path: '/todo' },
     { name: 'Post', path: '/post' },
     { name: 'Carousel', path: '/carousel' },
+    { name: 'Forgot Password', path: '/forgot-password' },
   ]
 
   function closeMenu(event: React.BaseSyntheticEvent) {

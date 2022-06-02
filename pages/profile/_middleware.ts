@@ -1,3 +1,7 @@
+// default
+// export { default } from 'next-auth/middleware'
+
+// custom
 import { withAuth } from 'next-auth/middleware'
 
 export default withAuth({

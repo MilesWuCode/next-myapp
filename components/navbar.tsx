@@ -33,6 +33,7 @@ export default function Navbar() {
     { name: 'Todo', path: '/todo' },
     { name: 'Post', path: '/post' },
     { name: 'Carousel', path: '/carousel' },
+    { name: 'Forgot Password', path: '/guest/forgot-password' },
   ]
 
   function closeMenu(event: React.BaseSyntheticEvent) {

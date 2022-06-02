@@ -6,13 +6,14 @@
 - login (Auth)
 - thirdparty-login (Auth+)
 - register (RESTful)
-- forget-password (RESTful)
+- forgot-password (RESTful)
 - verify-email (RESTful)
 - profile (Form Validation)
 - counter (vuex | redux)
 - todo (RESTful)
 - post (GraphQL)
 - image
+- carousel
 
 ## packages
 
@@ -32,7 +33,7 @@
 
 - tailwindcss
 - headlessui
-- daisyui
+- https://github.com/saadeghi/daisyui
 - merakiui (FYR)
 - https://github.com/mui/material-ui
 - semantic-ui-react (FYR)
