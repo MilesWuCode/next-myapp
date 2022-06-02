@@ -18,8 +18,8 @@ export default function Navbar() {
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    setPath(router.asPath)
-  }, [router.asPath])
+    setPath(router.pathname)
+  }, [router.pathname])
 
   const tabIndex: number = 0
 

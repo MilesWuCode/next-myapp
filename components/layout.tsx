@@ -18,8 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [path, setPath] = useState('')
 
   useEffect(() => {
-    setPath(router.asPath)
-  }, [router.asPath])
+    setPath(router.pathname)
+  }, [router.pathname])
 
   const link: Link[] = [
     { name: 'Index', path: '/' },
